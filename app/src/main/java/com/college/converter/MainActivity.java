@@ -3,11 +3,11 @@ package com.college.converter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
+import com.college.converter.databinding.ActivityMainBinding;
 /*
     TODOs:
     In groups of 4, complete the following tasks, 1 for each team member:
@@ -24,19 +24,17 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     static private final Float CONVERSION_RATE = 0.80F;
+    private ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        Button buttonConvert = findViewById(R.id.convertButton);
-
-        buttonConvert.setOnClickListener( view ->  {
-            convertCurrency(view);
-        } );
+        binding.convertButton.setOnClickListener(view -> convertCurrency("Euros"));
     }
 
-    public void convertCurrency(View view) {
+    public void convertCurrency(String view) {
 
         EditText inputView = findViewById(R.id.entryId);
 
